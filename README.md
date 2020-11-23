@@ -1,3 +1,3 @@
-#### # add-monitor-to-prometheu
+#### add-monitor-to-prometheu
 ![index.png](https://i.loli.net/2020/11/23/TntAZ4VH2aIvj9u.png)
-![add.png](https://i.loli.net/2020/11/23/fB8gTcwWquVlNXP.png))])]
+![add.png](https://i.loli.net/2020/11/23/fB8gTcwWquVlNXP.png)
