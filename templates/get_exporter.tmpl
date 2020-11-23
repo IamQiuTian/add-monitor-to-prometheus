@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"></head>
+<body>
+
+<label for="basic-url">站点存活监控添加</label>
+<div class="input-group">
+    <form>
+    <span class="input-group-addon" id="basic-addon1">域名</span>
+    <input type="text" class="form-control" id="address" placeholder="address" aria-describedby="basic-addon1">
+
+     <span class="input-group-addon" id="basic-addon1">监控组</span>
+     <input type="text" class="form-control" id="group" placeholder="group" aria-describedby="basic-addon1">
+
+    <span class="input-group-addon" id="basic-addon1">服务端口</span>
+    <input type="text" class="form-control" id="port" placeholder="port" aria-describedby="basic-addon1">
+
+    <span class="input-group-btn">
+        <button class="btn btn-default" id="butt" onclick="ck()"type="button">添加</button>
+      </span>
+    </form>
+</div>
+
+<!--JS部分-->
+<script type="text/javascript">
+    function ck() {
+        var group = $('#group').val();
+        var address = $('#address').val();
+        var port = $('#port').val();
+        var data = {
+            "group": group,
+            "address": address,
+            "port": parseInt(port),
+        }
+        var strData = JSON.stringify(data)
+
+        $.ajax({
+            type: 'post',
+            url: '/addget_exporter',
+            dataType: "json",
+            data: strData,
+            success: function (data) {
+                alert("添加成功")
+                window.location.reload()
+            },
+            error: function (data) {
+                alert("添加失败")
+            }
+        })
+    }
+</script>
+</body>
+</html>

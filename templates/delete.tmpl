@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"></head>
+<body>
+
+<label for="basic-url">监控项删除</label>
+<div class="input-group">
+    <form>
+        <span class="input-group-addon" id="basic-addon1">监控项名称</span>
+        <input type="text" class="form-control" id="item" placeholder="item" aria-describedby="basic-addon1">
+      </span>
+        <span class="input-group-btn">
+        <button class="btn btn-default" id="butt" onclick="ck()"type="button">删除</button>
+      </span>
+    </form>
+</div>
+
+<!--JS部分-->
+<script type="text/javascript">
+    function ck() {
+        var item = $('#item').val();
+        $.ajax({
+            type: 'post',
+            url: '/deleteservice',
+            data: {"message":item},
+            success: function (data) {
+                alert("删除成功")
+                window.location.reload()
+            },
+            error: function (data) {
+                alert("删除失败")
+                window.location.reload()
+            }
+        })
+    }
+</script>
+</body>
+</html>
