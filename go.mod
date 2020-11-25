@@ -1,4 +1,4 @@
-module add-monitor-to-prometheu
+module add-monitor-to-prometheus
 
 go 1.15
 
