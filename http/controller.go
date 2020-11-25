@@ -1,8 +1,8 @@
 package http
 
 import (
-	"automonitor/consul"
-	"automonitor/g"
+	"add-monitor-to-prometheu/consul"
+	"add-monitor-to-prometheu/g"
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
