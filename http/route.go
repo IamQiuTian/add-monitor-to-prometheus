@@ -1,7 +1,7 @@
 package http
 
 import (
-	"add-monitor-to-prometheu/g"
+	"add-monitor-to-prometheus/g"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
