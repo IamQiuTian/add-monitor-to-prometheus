@@ -1,7 +1,7 @@
 package http
 
 import (
-	"automonitor/g"
+	"add-monitor-to-prometheu/g"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
