@@ -1,7 +1,7 @@
 package consul
 
 import (
-	"automonitor/g"
+	"add-monitor-to-prometheus/g"
 	"errors"
 	consulapi "github.com/hashicorp/consul/api"
 	"log"
