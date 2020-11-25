@@ -1,8 +1,8 @@
 package main
 
 import (
-	"automonitor/g"
-	"automonitor/http"
+	"add-monitor-to-prometheus/g"
+	"add-monitor-to-prometheus/http"
 	"flag"
 	"log"
 )
