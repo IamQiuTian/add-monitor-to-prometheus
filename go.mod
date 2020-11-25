@@ -1,4 +1,4 @@
-module automonitor
+module add-monitor-to-prometheu
 
 go 1.15
 
