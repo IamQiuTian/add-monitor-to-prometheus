@@ -1,8 +1,8 @@
 package http
 
 import (
-	"add-monitor-to-prometheu/consul"
-	"add-monitor-to-prometheu/g"
+	"add-monitor-to-prometheus/consul"
+	"add-monitor-to-prometheus/g"
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
