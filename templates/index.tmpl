@@ -8,14 +8,44 @@
 <body>
 
 <div>
+    <h3>添加监控项</h3>
     <ul class="nav nav-pills nav-stacked">
         <li><a href="/node_exporter">添加主机基础监控</a></li>
         <li><a href="/port_exporter">添加服务端口监控</a></li>
-        <li><a href="/get_exporter">添加站点存活监控</a></li>
+        <li><a href="/mysqld_exporter">添加mysql数据库监控</a></li>
+        <li><a href="/mongodb_exporter">添加mongodb数据库监控</a></li>
         <li><a href="/ssl_exporter">添加SSL证书监控</a></li>
+        <li><a href="/domain_exporter">添加域名过期监控</a></li>
         <li><a href="/delete">删除监控项</a></li>
     </ul>
+    <button type="button"  id="logout" onclick="ck()">退出登录</button>
 </div>
-
 </body>
+
+<script type="text/javascript">
+    function ck() {
+        var data = {
+            "username": "admin",
+            "passowrd": "sdsfsdfsd",
+        }
+        var strData = JSON.stringify(data)
+
+        $.ajax({
+            type: 'post',
+            url: '/deleteauth',
+            xhrFields: {
+              withCredentials: true
+            },
+            dataType: "json",
+            data: strData,
+            success: function (data) { 
+                window.location = "/"
+            },
+            error: function (data) {
+                alert("退出失败")
+                console.log(data)
+            }
+        })
+    }
+</script>
 </html>

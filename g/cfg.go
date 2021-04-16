@@ -1,9 +1,10 @@
 package g
 
 import (
-	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"log"
+
+	"gopkg.in/yaml.v2"
 )
 
 var CF *Cfg
@@ -13,17 +14,19 @@ type Cfg struct {
 }
 
 type config struct {
-	ConsulServerList []string  `yaml:"consulServerList"`
-	Tags tags `yaml:"tags"`
-	HttpListen httpListen `yaml:"httpListen"`
+	ConsulServerList []string      `yaml:"consulServerList"`
+	Tags             tags          `yaml:"tags"`
+	HttpListen       httpListen    `yaml:"httpListen"`
+	AuthorizaTion    authorizaTion `yaml:"authorizaTion"`
 }
 
-
 type tags struct {
-	Node_exporter []string `yaml:"node_exporter"`
-	Port_exporter []string `yaml:"port_exporter"`
-	Get_exporter []string `yaml:"get_exporter"`
-	SSL_exporter []string `yaml:"ssl_exporter"`
+	Node_exporter    []string `yaml:"node_exporter"`
+	Port_exporter    []string `yaml:"port_exporter"`
+	Mysqld_exporter  []string `yaml:"mysqld_exporter"`
+	Mongodb_exporter []string `yaml:"mongodb_exporter"`
+	SSL_exporter     []string `yaml:"ssl_exporter"`
+	Domain_exporter  []string `yaml:"domain_exporter"`
 }
 
 type httpListen struct {
@@ -31,8 +34,12 @@ type httpListen struct {
 	Port string `yaml:"port"`
 }
 
+type authorizaTion struct {
+	Username string `yaml:"username"`
+	Password string `yaml:"password"`
+}
 
-func ReadYamlConfig(path string)  (error){
+func ReadYamlConfig(path string) error {
 	CF = new(Cfg)
 	yamlFile, err := ioutil.ReadFile(path)
 	if err != nil {
@@ -47,4 +54,3 @@ func ReadYamlConfig(path string)  (error){
 	}
 	return nil
 }
-

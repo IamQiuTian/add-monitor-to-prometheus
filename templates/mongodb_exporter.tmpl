@@ -7,15 +7,20 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"></head>
 <body>
 
-<label for="basic-url">SSL证书监控添加</label>
+<label for="basic-url">mongodb数据库监控添加</label>
 <div class="input-group">
     <form>
+    <span class="input-group-addon" id="basic-addon1">数据库名</span>
+    <input type="text" class="form-control" id="dbname" placeholder="cos_mongodb_prd" aria-describedby="basic-addon1">
 
-    <span class="input-group-addon" id="basic-addon1">域名</span>
-    <input type="text" class="form-control" id="address" placeholder="address" aria-describedby="basic-addon1">
+     <span class="input-group-addon" id="basic-addon1">监控组</span>
+     <input type="text" class="form-control" id="group" placeholder="group" aria-describedby="basic-addon1">
 
-    <span class="input-group-addon" id="basic-addon1">监控组</span>
-    <input type="text" class="form-control" id="group" placeholder="group" aria-describedby="basic-addon1">
+     <span class="input-group-addon" id="basic-addon1">exporter地址</span>
+     <input type="text" class="form-control" id="address" placeholder="address" aria-describedby="basic-addon1">
+
+    <span class="input-group-addon" id="basic-addon1">exporter端口</span>
+    <input type="text" class="form-control" id="port" placeholder="port" aria-describedby="basic-addon1">
 
     <span class="input-group-btn">
         <button class="btn btn-default" id="butt" onclick="ck()" type="button">添加</button>
@@ -26,17 +31,21 @@
 <!--JS部分-->
 <script type="text/javascript">
     function ck() {
+        var dbname = $('#dbname').val();
         var group = $('#group').val();
         var address = $('#address').val();
+        var port = $('#port').val();
         var data = {
+            "hostname": dbname,
             "group": group,
             "address": address,
+            "port": parseInt(port),
         }
         var strData = JSON.stringify(data)
 
         $.ajax({
             type: 'post',
-            url: '/addssl_exporter',
+            url: '/addmongodb_exporter',
             dataType: "json",
             data: strData,
             success: function (data) {
@@ -45,6 +54,7 @@
             },
             error: function (data) {
                 alert("添加失败")
+                console.log(data)
             }
         })
     }

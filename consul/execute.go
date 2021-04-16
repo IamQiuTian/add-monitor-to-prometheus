@@ -3,27 +3,32 @@ package consul
 import (
 	"add-monitor-to-prometheus/g"
 	"errors"
-	consulapi "github.com/hashicorp/consul/api"
-	"log"
 	"fmt"
+	"log"
+
+	consulapi "github.com/hashicorp/consul/api"
 )
 
+func init() {
+	log.SetPrefix("[DEBUG]")
+	log.SetFlags(log.Ldate | log.Ltime | log.Lshortfile)
+}
 
-func ReadService(serviceid string) (address string, port int, err error) {
+func ReadService(serviceid string) (address *string, port *int, err error) {
 	for _, ipaddr := range g.CF.Config.ConsulServerList {
-		client,err := InitConfig(ipaddr)
+		client, err := InitConfig(ipaddr)
 		if err != nil {
 			log.Println(err)
 			continue
 		}
 		srv, _, err := client.Agent().Service(serviceid, nil)
-		if err !=nil {
+		if err != nil {
 			log.Println(err)
 			continue
 		}
-		return srv.Address, srv.Port, nil
+		return &srv.Address, &srv.Port, nil
 	}
-	return "",int(0), errors.New("Not Fond Service")
+	return nil, nil, errors.New("Not Fond Service")
 }
 
 func WriteService(consuldata g.ConsulData, checkUrl string, checkPort int) error {

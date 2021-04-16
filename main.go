@@ -16,6 +16,6 @@ func init() {
 	}
 }
 
-func main()  {
+func main() {
 	http.Run()
 }

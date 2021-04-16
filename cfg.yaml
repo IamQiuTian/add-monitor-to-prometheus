@@ -1,0 +1,22 @@
+config:
+  consulServerList:
+    - x.x.x.x:8500
+    - x.x.x.x:8500
+    - x.x.x.x:8500
+
+  tags:
+    node_exporter:
+      - node_exporter,healthcheck
+    port_exporter:
+      - blackbox,healthcheck
+    mysqld_exporter:
+      - mysqld_exporter,metricscheck
+    mongodb_exporter:
+      - mongodb_exporter,metricscheck
+    ssl_exporter:
+      - sslcheck,expirecheck
+    domain_exporter:
+      - domaincheck,expirecheck
+      
+  authorizaTion:  {username: "xxxx", password: "xxxxx"}   
+  httpListen: {host: "127.0.0.1", port: "8558"}
